@@ -3,6 +3,34 @@
 
 using namespace std;
 
+//função que retorna true se a string passada for um numero e false caso contrario
+bool valida_apenas_numeros(string entrada){
+    for(int i=0;i<entrada.size();i++){
+        if((!isdigit(entrada[i]))&&(entrada[i]!='.')){
+            return false;
+        }
+    }
+    return true;
+}
+
+
+//função para a leitura de apenas numeros reais, caso ocorra um outro tipo de dado, a funçao acusa um erro
+float ler_numeros_reais(){
+    string entrada;
+    leitura:
+    try{
+        cin >> entrada;
+        if(!valida_apenas_numeros(entrada)){
+            throw(entrada);
+        }
+    }catch(string msg){
+        cout << msg << " Não é um valor valido " <<endl;
+        system("pause");
+        goto leitura;
+        cout << endl << endl;
+    }
+    return stof(entrada);
+}
 
 //aloca memoria para uma matriz quadrada nxn
 float **cria_matriz_quadrada(int tamanho){
@@ -16,17 +44,13 @@ float **cria_matriz_quadrada(int tamanho){
 
 //Recebe um tamanho da matriz quadrado, ou seja se n = 2, lera 4 valores, dois em cada linha;
 void ler_valores_matriz_quadrada(int tamanho, float **matriz){
+    string entrada;
     cout << "Digite os valores um em cada linha, (apenas numeros)" << endl << endl;
     for(int i = 0; i<tamanho; i++){
             for(int j=0; j<tamanho; j++){
-                cout << "matriz["<<i+1<<"]["<<j+1<<"]: ";
                 leitura:
-                try{
-                    cin >> matriz[i][j];
-                }catch(exception& e){
-                    cout << "valor invalido \n digite apenas numeros" << endl;
-                    goto leitura;
-            }
+                cout << "matriz["<<i+1<<"]["<<j+1<<"]: ";
+                matriz[i][j]= ler_numeros_reais();
         }
     }
 }
@@ -45,18 +69,15 @@ float calcular_determinante(int n, float **m){
 
 int main(){
 setlocale(LC_ALL, "Portuguese");
-int n, teste;
+int n,teste;
 float **m;
 float det;
+string entrada;
+
 inicio:
 system("cls");
 cout << "Digite o tamanho da Matriz: ";
-try{
-    cin >> n;
-}catch(exception& e){
-    n = 0;
-}
-
+n = ler_numeros_reais();
 if((n==3)||(n==2)){
     m = cria_matriz_quadrada(n);
     ler_valores_matriz_quadrada(n,m);
@@ -67,17 +88,11 @@ if((n==3)||(n==2)){
     cout << "Valor invalido !!"<<endl << "O programa aceita matriz de tamanho 2x2 e 3x3"<<endl;
     system("pause");
 }
+
 comando:
 system("cls");
-cout << "\n\nDigite 1 para continuar e 0 para sair\n";
-try{
-    cin >> teste;
-}catch(exception& e){
-    cout << "comando invalido";
-    goto comando;
-}
-
-
+cout << "Digite 0 para Sair e 1 para continuar\n";
+teste = ler_numeros_reais();
 switch(teste){
     case 0:
         break;
