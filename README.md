@@ -1,4 +1,7 @@
 [![GitHub license](https://img.shields.io/github/license/Matheus-Souza-Rozendo/calculadora-determinantes-cpp)](https://github.com/Matheus-Souza-Rozendo/calculadora-determinantes-cpp/blob/main/LICENSE)
+![GitHub repo size](https://img.shields.io/github/repo-size/Matheus-Souza-Rozendo/calculadora-determinantes-cpp)
+![GitHub language count](https://img.shields.io/github/languages/count/Matheus-Souza-Rozendo/calculadora-determinantes-cpp)
+![GitHub top language](https://img.shields.io/github/languages/top/Matheus-Souza-Rozendo/calculadora-determinantes-cpp)
 
 # Calculadora de Determinantes em C++
 Matrizes são usadas em varias aplicações de matemática e ciências. Com o intuito de ajudar estudantes foi criado esse projeto.  
