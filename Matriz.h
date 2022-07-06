@@ -8,14 +8,13 @@ using namespace std;
 class Matriz{
     public:
         Matriz();
-        float get_determinante();
+        float calcular_determinante();
         void set_dados(float **dado);
         bool set_tamanho(int tam);
     private:
         float calcular_determinante();
         float **dados = NULL;;
         int tamanho = 0;
-        float determinante=NULL;
 };
 Matriz::Matriz(){}
 
@@ -28,10 +27,6 @@ float Matriz::calcular_determinante(){
     }else{
 
     }
-}
-
-float Matriz::get_determinante(){
-    return calcular_determinante();
 }
 
 void Matriz::set_dados(float **dado){
