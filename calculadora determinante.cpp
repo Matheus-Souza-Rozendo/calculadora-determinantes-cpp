@@ -28,7 +28,7 @@ if(M->set_tamanho(tamanho)){
     matriz = ler_matriz_numeros_reais(tamanho,tamanho);
     M->set_dados(matriz);
     cout << endl << endl<< endl;
-    cout << "Determinante: " << M->get_determinante() << endl;
+    cout << "Determinante: " << M->calcular_determinante() << endl;
     system("pause");
 
     //rotina de menu
