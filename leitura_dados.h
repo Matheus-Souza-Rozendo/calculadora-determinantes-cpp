@@ -3,15 +3,42 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-//função que retorna true se a string passada for um numero e false caso contrario
+//funÃ§Ã£o que retorna true se a string passada for um numero e false caso contrario
 bool valida_apenas_numeros(string entrada){
+    bool ponto,menos;
+    ponto=false;
+    menos=false;
     for(int i=0;i<entrada.size();i++){
-        if((!isdigit(entrada[i]))&&(entrada[i]!='.')){
+        if((!isdigit(entrada[i]))&&(entrada[i]!='.')&&(entrada[i]!='-')){
             return false;
+        }
+        if(entrada[i]=='.' && ponto){
+            return false;
+        }
+        if(entrada[i]=='-' && menos){
+            return false;
+        }
+        if(entrada[i]=='.'){
+            ponto=true;
+        }
+        if(entrada[i]=='-'){
+            menos=true;
         }
     }
     return true;
 }
+
+//converter para float
+float to_float(const std::string& str)
+{
+   std::istringstream is(str) ;
+   float result;
+   result = ::strtod(str.c_str(), 0);
+   is >> result;
+   return result ;
+}
+
+
 
 float ler_numeros_reais(){
     string entrada;
@@ -22,12 +49,12 @@ float ler_numeros_reais(){
             throw(entrada);
         }
     }catch(string msg){
-        cout << msg << " Não é um valor valido " <<endl;
+        cout << msg << " NÃ£o Ã© um valor valido " <<endl;
         system("pause");
         goto leitura;
         cout << endl << endl;
     }
-    return stof(entrada);
+    return to_float(entrada);
 }
 
 float **cria_matriz(int linhas,int colunas){
